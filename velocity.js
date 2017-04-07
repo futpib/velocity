@@ -2560,7 +2560,7 @@
 
 			elements = sanitizeElements(elements);
 
-			if (!elements) {
+			if (!elements || elements.length === 0) {
 				if (promiseData.promise) {
 					if (!propertiesMap || !options || options.promiseRejectEmpty !== false) {
 						promiseData.rejecter();
@@ -2568,7 +2568,7 @@
 						promiseData.resolver();
 					}
 				}
-				return;
+				return getChain();
 			}
 
 			/* The length of the element set (in the form of a nodeList or an array of elements) is defaulted to 1 in case a
